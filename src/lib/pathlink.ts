@@ -3,5 +3,5 @@ export enum Pathlink {
     LOGIN = '/login',
     REGISTER = '/register',
     DASHBOARD = '/dashboard',
-    USER = '/dashboard/user'
+    LOGS = '/dashboard/logs'
 }

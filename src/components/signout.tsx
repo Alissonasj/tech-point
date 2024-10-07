@@ -13,7 +13,7 @@ export function SignOut() {
                 });
             }}
         >
-            <Button type='submit' variant={'secondary'} className='text-[#020F1F]'>
+            <Button type='submit' variant={'secondary'} className='text-[#020F1F] rounded-none'>
                 <LogOutIcon />
             </Button>
         </form>

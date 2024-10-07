@@ -18,23 +18,35 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             },
 
             authorize: async (credentials, request) => {
-                const { registration, password } = credentials;                
+                const { registration, password } = credentials;
 
                 const { user, success } = await getUser(
                     registration as string,
                     password as string
-                );                
-                
+                );
+
                 if (!success) return null;
 
                 if (success)
                     return {
-                        id: user?.matricula,
-                        name: user?.nome
+                        registration: user?.matricula,
+                        name: user?.nome,                        
                     };
 
                 return null;
             }
         })
-    ]
+    ],
+
+    callbacks: {
+        async session({ session, token }) {
+            console.log(session);            
+            
+            console.log(token);
+
+            if (session?.user) session.user.registration = token.sub as string;
+
+            return session;
+        }
+    }
 });

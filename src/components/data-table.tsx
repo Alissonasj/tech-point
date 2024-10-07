@@ -1,27 +1,21 @@
-type DataTableProps = {
-    tableDataList: {
-        id: number;
-        data: string;
-        entrada: string;
-        pausa: string;
-        retorno: string;
-        saida: string;
-        horas: string;
-    }[];
-};
+import { LogsProps } from "@/@types/props";
 
-export default function DataTable({ tableDataList }: DataTableProps) {
+type ListLogs = {
+    listLogs: LogsProps[]
+}
+
+export default function DataTable({ listLogs }: ListLogs) {
     return (
         <tbody>
-            {tableDataList.map((tableData) => {
+            {listLogs.map((logs) => {
                 return (
-                    <tr key={tableData.id} className='odd:bg-white even:bg-slate-100'>
-                        <td className='border p-2'>{tableData.data}</td>
-                        <td className='border p-2'>{tableData.entrada}</td>
-                        <td className='border p-2'>{tableData.pausa}</td>
-                        <td className='border p-2'>{tableData.retorno}</td>
-                        <td className='border p-2'>{tableData.saida}</td>
-                        <td className='border p-2'>{tableData.horas}</td>
+                    <tr key={logs.dataJornada} className='odd:bg-white even:bg-slate-100'>
+                        <td className='border p-2'>{logs.dataJornada}</td>
+                        <td className='border p-2'>{logs.hrEntrada}</td>
+                        <td className='border p-2'>{logs.pausaAlmoco}</td>
+                        <td className='border p-2'>{logs.retornoAlmoco}</td>
+                        <td className='border p-2'>{logs.hrSaida}</td>
+                        <td className='border p-2'>{logs.hrsRealizadas}</td>
                     </tr>
                 );
             })}
