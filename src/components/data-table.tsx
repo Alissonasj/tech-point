@@ -1,7 +1,7 @@
-import { LogsProps } from "@/@types/props";
+import { LogProps } from "@/@types/props";
 
 type ListLogs = {
-    listLogs: LogsProps[]
+    listLogs: LogProps[]
 }
 
 export default function DataTable({ listLogs }: ListLogs) {

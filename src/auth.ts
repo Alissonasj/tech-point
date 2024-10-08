@@ -29,8 +29,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
                 if (success)
                     return {
-                        registration: user?.matricula,
-                        name: user?.nome,                        
+                        id: user?.matricula,
+                        name: user?.nome,
+                        registration: user?.matricula
                     };
 
                 return null;
@@ -40,11 +41,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
     callbacks: {
         async session({ session, token }) {
-            console.log(session);            
-            
-            console.log(token);
-
-            if (session?.user) session.user.registration = token.sub as string;
+            if (session?.user) session.user.registration = token?.sub;
 
             return session;
         }

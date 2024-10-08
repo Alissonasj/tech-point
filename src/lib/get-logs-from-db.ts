@@ -1,4 +1,4 @@
-import { LogsProps } from "@/@types/props";
+import { LogProps } from "@/@types/props";
 
 export async function getLogsFromDb(registration: string) {
     const response = await fetch(`http://localhost:8080/banco/buscar/${registration}`, {
@@ -8,7 +8,7 @@ export async function getLogsFromDb(registration: string) {
         }
     });
 
-    const listLogs: LogsProps[] = await response.json();
+    const listLogs: LogProps[] = await response.json();
 
     return listLogs;
 }

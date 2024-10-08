@@ -20,7 +20,7 @@ export default async function LogsPage() {
                         <th className='border p-2'>Horas</th>
                     </tr>
                 </thead>
-                {/* <DataTable listLogs={listLogs} /> */}
+                <DataTable listLogs={listLogs} />
             </table>
         </div>
     );

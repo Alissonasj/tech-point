@@ -2,11 +2,11 @@
 
 import { getUserFromDb } from '@/lib/get-user-from-db';
 import { SignInType } from '@/lib/zod';
-import { signIn } from '../auth';
+import { auth, signIn } from '../auth';
 
 export async function getUser(registration: string, password: string) {
     const { user, response } = await getUserFromDb(registration, password);
-    
+
     try {
         if (!user && !response.ok)
             return {
@@ -44,4 +44,25 @@ export async function login(formData: SignInType) {
             message: 'Crendenciais inválidas.'
         };
     }
+}
+
+export async function registerEntry() {
+    const session = await auth();
+
+    const payload = {
+        matricula: session?.user.registration
+    };
+
+    const response = await fetch(
+        'http://localhost:8080/banco/registrarentrada',
+        {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    );
+
+    return response.ok;
 }

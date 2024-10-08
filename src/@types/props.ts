@@ -1,4 +1,4 @@
-export type LogsProps = {
+export type LogProps = {
     dataJornada: string;
     hrEntrada: string;
     pausaAlmoco: string;
