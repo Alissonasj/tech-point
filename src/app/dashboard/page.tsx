@@ -1,6 +1,6 @@
 'use client';
 
-import { registerEntry } from '@/actions/user.actions';
+import { registerEntry, registerUpdate } from '@/actions/user.actions';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 
@@ -11,6 +11,28 @@ export default function DashboardPage() {
         const isRegister = await registerEntry();
 
         if (isRegister) {
+            toast({
+                description: 'Entrada realizada com sucesso!',
+                style: {
+                    backgroundColor: '#4BB543',
+                    color: 'white'
+                }
+            });
+        } else {
+            toast({
+                description: 'Entrada não registrada.',
+                variant: 'destructive',
+                style: {
+                    color: 'white'
+                }
+            });
+        }
+    }
+
+    async function update(path: string) {
+        const isUpdate = await registerUpdate(path);        
+
+        if (isUpdate) {
             toast({
                 description: 'Entrada realizada com sucesso!',
                 style: {
@@ -41,18 +63,21 @@ export default function DashboardPage() {
             <Button
                 className='h-80 rounded-none text-5xl uppercase hover:bg-[#020F1F] hover:text-zinc-100'
                 variant={'outline'}
+                onClick={() => update('registrarpausa')}
             >
                 Pausa
             </Button>
             <Button
                 className='h-80 rounded-none text-5xl uppercase hover:bg-[#020F1F] hover:text-zinc-100'
                 variant={'outline'}
+                onClick={() => update('registrarretorno')}
             >
                 Retorno
             </Button>
             <Button
                 className='h-80 rounded-none text-5xl uppercase hover:bg-[#020F1F] hover:text-zinc-100'
                 variant={'outline'}
+                onClick={() => update('registrarsaida')}
             >
                 Saída
             </Button>

@@ -17,7 +17,7 @@ export default async function DashboardLayout({
         <div>
             <div className='mx-20'>
                 <div className='flex justify-between bg-[#020F1F] px-5 py-5'>
-                    <div className='text-zinc-100'>{`Colaborador(a): ${session.user?.registration}`}</div>
+                    <div className='text-zinc-100'>{`Matrícula: ${session.user?.registration}`}</div>
                     <div className='text-zinc-100'>{`Colaborador(a): ${session.user?.name}`}</div>
                     <div>
                         <SignOut />

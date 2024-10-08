@@ -66,3 +66,21 @@ export async function registerEntry() {
 
     return response.ok;
 }
+
+export async function registerUpdate(path: string) {
+    const session = await auth();
+
+    const payload = {
+        matricula: session?.user.registration
+    };
+
+    const response = await fetch(`http://localhost:8080/banco/${path}`, {
+        method: 'PUT',
+        body: JSON.stringify(payload),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    return response.ok;
+}
