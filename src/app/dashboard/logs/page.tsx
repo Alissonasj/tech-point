@@ -5,7 +5,9 @@ import { getLogsFromDb } from '@/lib/get-logs-from-db';
 export default async function LogsPage() {
     const session = await auth();
 
-    const listLogs = await getLogsFromDb(session?.user?.registration as string);
+    const { listLogs, message } = await getLogsFromDb(
+        session?.user?.registration as string
+    );
 
     return (
         <div>
@@ -22,6 +24,7 @@ export default async function LogsPage() {
                 </thead>
                 <DataTable listLogs={listLogs} />
             </table>
+            <p className='text-center'>{message && message}</p>
         </div>
     );
 }

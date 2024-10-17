@@ -1,13 +1,13 @@
 import { LogProps } from "@/@types/props";
 
 type ListLogs = {
-    listLogs: LogProps[]
+    listLogs: LogProps[] | undefined
 }
 
 export default function DataTable({ listLogs }: ListLogs) {
     return (
         <tbody>
-            {listLogs.map((logs) => {
+            {listLogs?.map((logs) => {
                 return (
                     <tr key={logs.dataJornada} className='odd:bg-white even:bg-slate-100'>
                         <td className='border p-2'>{logs.dataJornada}</td>
