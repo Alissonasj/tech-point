@@ -74,7 +74,7 @@ export default function LoginForm() {
                         name='password'
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Matrícula</FormLabel>
+                                <FormLabel>Senha</FormLabel>
                                 <FormControl>
                                     <Input
                                         type='password'
